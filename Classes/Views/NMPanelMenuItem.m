@@ -48,7 +48,7 @@
         } else {
             CCTexture2D* glowTex = [[CCTexture2D alloc] initWithImage: [UIImage imageNamed:glowName]];
             CCSpriteFrame* spriteFrame = [[CCSpriteFrame alloc] initWithTexture:glowTex 
-                                                                           rect:CGRectMake(0,0,glowTex.pixelsWide,glowTex.pixelsHigh) offset: ccp(0,0)];
+                                                                           rect:CGRectMake(0,0,glowTex.pixelsWide,glowTex.pixelsHigh)];
             [fcache addSpriteFrame:spriteFrame name:glowName];
             [spriteFrame release];
             [glowTex release];

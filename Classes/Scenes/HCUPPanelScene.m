@@ -67,11 +67,15 @@
     // Now add the panels
     for(int i=0; i < numberOfPages; i++) {
         NSString* currentName = [panelNames objectAtIndex:i];
-        CCSprite* pane2 = [CCSprite spriteWithFile:[NSString stringWithFormat: @"%@-panel.png", currentName]];
-        NMPanelMenuItem* menuItem2 = [[NMPanelMenuItem alloc] initFromNormalSprite:pane2 
+       
+      CCSprite* pane1 = [CCSprite spriteWithFile:[NSString stringWithFormat: @"%@-panel.png", currentName]];
+      CCSprite* pane2 = [CCSprite spriteWithFile:[NSString stringWithFormat: @"%@-panel.png", currentName]];
+      CCSprite* pane3 = [CCSprite spriteWithFile:[NSString stringWithFormat: @"%@-panel.png", currentName]];
+       
+       NMPanelMenuItem* menuItem2 = [[NMPanelMenuItem alloc] initFromNormalSprite:pane1 
                                                                     selectedSprite:pane2
-                                                                      activeSprite:pane2
-                                                                    disabledSprite:pane2
+                                                                      activeSprite:pane3
+                                                                    disabledSprite:nil
                                                                               name:currentName
                                                                             target:self selector:@selector(levelPicked:)];
         menuItem2.world = i;
@@ -98,6 +102,7 @@
 
     // add our panels layer
     [panels addChild:menu];
+   
     [self addChild:panels];
 
     // set the position of the menu to the center of the very first panel
@@ -150,7 +155,7 @@
     [super visit];
     if(nextWorld_ > -1 && !transitioning_) {
         transitioning_ = YES;
-        [[CCDirector sharedDirector] replaceScene:[CCCrossFadeTransition transitionWithDuration:0.5 scene:[HCUPPanelScene scene]]];
+        [[CCDirector sharedDirector] replaceScene:[CCTransitionCrossFade transitionWithDuration:0.5 scene:[HCUPPanelScene scene]]];
     }
 }
 

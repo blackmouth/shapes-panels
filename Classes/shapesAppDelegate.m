@@ -42,12 +42,14 @@
           [CCDirector setDirectorType:kCCDirectorTypeNSTimer];
     CCDirector *__director = [CCDirector sharedDirector];
     [__director setDeviceOrientation:kCCDeviceOrientationPortrait];
-    [__director setDisplayFPS:NO];
+    [__director setDisplayFPS:YES];
     [__director setAnimationInterval:1.0/60];
-    EAGLView *__glView = [EAGLView viewWithFrame:[window bounds]
-                                     pixelFormat:kEAGLColorFormatRGB565
-                                     depthFormat:0 /* GL_DEPTH_COMPONENT24_OES */
-                              preserveBackbuffer:NO];
+  
+  EAGLView *__glView = [EAGLView viewWithFrame:[window bounds]
+                        pixelFormat:kEAGLColorFormatRGBA8	// kEAGLColorFormatRGBA8
+                        depthFormat:0						// GL_DEPTH_COMPONENT16_OES
+             ];
+  
     [__director setOpenGLView:__glView];
     [window addSubview:__glView];
     [window makeKeyAndVisible];

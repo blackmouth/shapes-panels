@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface CocosOverlayScrollView : UIScrollView
-{
+@interface CocosOverlayScrollView : UIScrollView <UIScrollViewDelegate> {
     CCNode* targetLayer;
 }
 @property(nonatomic, retain) CCNode* targetLayer;
